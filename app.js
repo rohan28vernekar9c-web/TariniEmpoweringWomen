@@ -5456,9 +5456,11 @@ async function sendAIMessage() {
         };
 
         const encodedHistory = encodeURIComponent(JSON.stringify(_aiChatHistory.slice(0, -1)));
-        const res = await fetch(_GEMINI_URL + '?msg=' + encodeURIComponent(message) + '&history=' + encodedHistory, {
+        const proxyUrl = _GEMINI_URL + '?msg=' + encodeURIComponent(message) + '&history=' + encodedHistory;
+        const res = await fetch(proxyUrl, {
             method: 'GET',
-            redirect: 'follow'
+            redirect: 'follow',
+            mode: 'cors'
         });
 
         if (!res.ok) {
