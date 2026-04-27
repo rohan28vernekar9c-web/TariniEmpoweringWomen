@@ -5384,7 +5384,7 @@ function generateMockAIResponse(userInput) {
 // ============================================================
 
 const _GEMINI_API_KEY = 'AIzaSyCi6v2joQGoXY12wzKk8B-klsmqlbHQ-Ug';
-const _GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${_GEMINI_API_KEY}`;
+const _GEMINI_URL = 'https://womenenpowerapp1.rohan28-vernekar9c.workers.dev/';
 
 const _AI_SYSTEM_PROMPT = `You are the Tarini AI Assistant. You are a smart, supportive, and safety-focused AI designed specifically for a women-focused job platform named Tarini.
 
