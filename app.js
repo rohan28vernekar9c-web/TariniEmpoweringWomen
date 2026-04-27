@@ -5383,8 +5383,8 @@ function generateMockAIResponse(userInput) {
 // AI ASSISTANT CHAT — Direct Gemini API (frontend)
 // ============================================================
 
-const _GEMINI_API_KEY = 'AIzaSyCi6v2joQGoXY12wzKk8B-klsmqlbHQ-Ug';
-const _GEMINI_URL = 'https://womenenpowerapp1.rohan28-vernekar9c.workers.dev/';
+const _GEMINI_API_KEY = 'PROXY_ONLY';
+const _GEMINI_URL = 'https://script.google.com/macros/s/AKfycbwpf8RszcwWa2zBUNC1OaYYntzuh8XfP7TnN3k7fwNLuwcP_HTvt3ldTQa0jSjlw9Zy/exec';
 
 const _AI_SYSTEM_PROMPT = `You are the Tarini AI Assistant. You are a smart, supportive, and safety-focused AI designed specifically for a women-focused job platform named Tarini.
 
@@ -5455,10 +5455,10 @@ async function sendAIMessage() {
             contents: _aiChatHistory
         };
 
-        const res = await fetch(_GEMINI_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+        const encodedHistory = encodeURIComponent(JSON.stringify(_aiChatHistory.slice(0, -1)));
+        const res = await fetch(_GEMINI_URL + '?msg=' + encodeURIComponent(message) + '&history=' + encodedHistory, {
+            method: 'GET',
+            redirect: 'follow'
         });
 
         if (!res.ok) {
